@@ -1,0 +1,54 @@
+---------------- 2xEXPLORER REGISTRY SETTINGS ----------------
+
+2xExplorer uses the system registry to store many program options. Everything you can control directly within 2x is stored there, but there are other settings that are controllable only by direct editing of the registry. This file describes some of the latter options that advanced users can tweak for better customisation.
+
+
+***WARNING***
+EDITING THE REGISTRY CAN RENDER YOUR COMPUTER UNUSABLE. UNLESS YOU ARE 100% CERTAIN YOU KNOW WHAT YOU ARE DOING, YOU ARE ADVICED NOT TO MODIFY IT IN ANY WAY.
+*************
+
+
+If you are still reading this despite the above scaremongering <g>, then you would know about RegEdit.exe or other more advanced registry editors. Here's the drill:
+
+* EXIT 2xExplorer (this is essential)
+* Start regedit using Start | Run (or equivalent)
+* Locate the "key" where 2x keeps its settings
+* Double-click on a "variable" name to change its value
+
+The default key is "HKEY_CURRENT_USER\Software\ZabaraKatranemia Plc\2xExplorer" but this may vary slightly if you are using the /S command line option (see 2xExplorer.rtf for details). The settings are held in sub-keys of this primary key.
+
+Most options have self-descriptive names, so it shouldn't be hard to imagine what each variable does. As a general further hint, names that begin with 'b' (e.g. bUnderline) refer to on/off (boolean) settings. Setting the value to 0 turns the option off, any other value enables it. Names starting with 'n' imply a number of some sort, and those with 'sz' are strings. Hungarian people talk like that, alledgedly <g>.
+
+Here's a description of settings you may want to experiment with, organized by subkey:
+
+[Editor/Viewer Settings]
+* bHorizScroll: Adds a horizontal scroll bar, if necessary
+* bSelectionBar: Adds a small gap to the left acting like a selection margin
+
+[General Settings]
+* bUsePlainIcons: Makes the program faster by showing simple icons for files & folders
+* szDirPrintFormat: sprintf-like format string used for "printed" folder listings
+* bPlainBytesFormat: Set to 0 if you want "compressed" file size info (in kB/MB etc)
+* nMaxExtractSize: Size limit for files processed within zipfolders; set to 0 to prevent extraction altogether.
+
+[Left Pane Settings]
+* msFreeSpaceUpdateInterval: Time interval in milliseconds (1sec = 1000ms) between successive disk free space inquiries. (this is actually for both panes, not just the left)
+
+[MainFrame Settings]
+* nFolderComboHeight: Height of the drop-down portion of the address bar in pixels.
+* nFolderComboWidth: Width of the above in pixels, used when the bar is floating or docked horizontally.
+* nMaxFileSizeThumb: Size limit in bytes for files whose thumbnails are generated.
+* szDosCmdPreample: String that is prepended to the DOS command you type to be executed in the address bar.
+* szShellCmdPreample: Ditto for "shell" commands (starting with '>')
+* msTreeAutoCDDelay: Delay in milliseconds before the autoCD mode kicks in (for single-click activation mode)
+
+[Find File/Folder Settings]
+* bAutoPadWildcard: If set then names (e.g. "file") with no wildcards in the Named box will automatically expand to "*file*" during the search.
+
+
+For more details on the above settings you need to search within the archive of older release announcements, "ReleaseNotes.zip".
+
+
+------------------------------------------------------------------------
+WWW:    http://www.netez.com/2xExplorer
+Forum:  http://www.netez.com/bbs/

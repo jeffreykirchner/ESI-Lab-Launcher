@@ -1,0 +1,39 @@
+---------------------------------------------------------
+2xEXPLORER LICENSE AGREEMENT: TERMS AND CONDITIONS OF USE
+---------------------------------------------------------
+
+* 2xExplorer is free to use and distribute, as long as you are not selling it for profit.
+
+* Despite the effort that went into building 2xExplorer, there's no warranty that's free of bugs. You are using it at your own risk.
+
+For more details about conditions of use please refer to the full agreement below.
+
+
+If you use this program regularly, you are encouraged to "register" by simply sending an e-mail (even an empty one) to the author ( n.bozinis@ic.ac.uk ). This will e.g. ensure that you'll be notified about any future releases of 2xExplorer.
+
+DONATIONS. 2xExplorer development relies on voluntary contributions from its users. Please consider donating a small amount to keep this project alive. Details can be found in the website. ( http://www.netez.com/2xExplorer/donate.html )
+
+
+
+---------------- FULL LICENCE AGREEMENT ----------------
+
+INSTALLATION OR USE OF THE ENCLOSED SOFTWARE INDICATES YOUR ASSENT TO THE FOLLOWING LICENSE AGREEMENT.
+
+LICENSE GRANT. You are granted a free non-exclusive and non-transferable right to use and distribute, for personal or commercial purposes the enclosed software, and any associated documentation (the "Software"), provided any copy must contain all of the original proprietary notices.
+
+RESTRICTIONS. Except as otherwise expressly permitted in this Agreement, you are not allowed to: (a) modify or create any derivative works of the Software; (b) reverse-engineer, decompile, disassemble or otherwise attempt to derive the source code for the Software except and only to the extent that such activity is expressly permitted by applicable law notwithstanding this limitation; (c) manipulate or alter the components that make up this Software in any way; (d) sell, rent, lease, sublicense, or otherwise transfer rights to the Software. 
+
+OWNERSHIP. This Software is licensed and not sold. This Software and its source code are proprietary products of Author of this Software (Nikos Bozinis) and are protected by copyright and other intellectual property laws. You acquire only the right to use the Software and do not acquire any rights, express or implied, in the Software other than those specified in this Agreement. Author shall at all times retain all rights, title, interest, including intellectual property rights, in the Software.
+
+DISLAIMER OF WARRANTY. THIS SOFTWARE IS PROVIDED FREE OF CHARGE AND ON AN "AS IS" BASIS, WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED INCLUDING WITHOUT LIMITATION THE WARRANTIES THAT IT IS FREE OF DEFECTS, MERCHANTABLE, FIT FOR A PARTICULAR PURPOSE OR NON-INFRINGING. THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE SOFTWARE IS WITH YOU. SHOULD THE SOFTWARE PROVE DEFECTIVE, YOU ASSUME THE COST OF ALL NECESSARY SERVICING, REPAIR, OR CORRECTION. 
+
+LIMITATION OF LIABILITY. IN NO EVENT SHALL THE AUTHOR, COPYRIGHT HOLDER, OR ANY OTHER PARTY WHO MAY REDISTRIBUTE THE SOFTWARE BE LIABLE TO YOU FOR DAMAGES, INCLUDING ANY GENERAL, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES ARISING OUT OF THE USE OR INABILITY TO USE THE SOFTWARE (INCLUDING, BUT NOT LIMITED TO, LOSS OF DATA, DATA BEING RENDERED INACCURATE, LOSS OF BUSINESS PROFITS, LOSS OF BUSINESS INFORMATION, BUSINESS INTERRUPTIONS, LOSS SUSTAINED BY YOU OR THIRD PARTIES, OR A FAILURE OF THE SOFTWARE TO OPERATE WITH ANY OTHER SOFTWARE) EVEN IF THE AUTHOR, COPYRIGHT HOLDER, OR OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+
+TERMINATION. VIOLATION OR NON-ACCEPTANCE OF ANY OF THE ABOVE LICENSE AGREEMENT IMMEDIATELY AND UNCONDITIONALLY TERMINATES YOUR LICENSE.
+
+Copyright (c) 1999-2002 Nikos Bozinis. All Rights Reserved.
+
+
+------------------------------------------------------------------------
+WWW:    http://www.netez.com/2xExplorer
+Forum:  http://www.netez.com/bbs/

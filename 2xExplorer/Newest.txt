@@ -1,0 +1,153 @@
+/////////////////////////////////////////////////////////////////////////////
+// On this day of our Lord 02-Aug-2002 08:09:01
+// "He is the Alpha, the Omega", but for the moment just the Beta <g>
+//
+
+#undef WTL
+#define MFC
+typedef 2xExplorer<Z1, 1.4.1.10> Omega;
+
+
+Well lads, 2xExplorer has made it happily to the 1-litre league (from its humble 750cc origins) utilizing state of the art quadratic reboring technology. You may have perhaps heard that in the past few months I have been busy rewriting a brand new file management kernel — the xplorer² project — that will eventually put a bullet in the binary head of 2xExplorer (and a few other contenders in the explorer replacement arena too). There's just a little glitch: the latter replacement has still a long way to go before it matures into a usable file manager. So I thought to meself, as you do, "why not have an intermediate release acting like a stepping stone for the transition?", and sure enough that was the way to go.
+
+2xExplorer has an old carcass of a code base and it needs all the support it can get. So the new high-tech 0-1 parts transplant programme from xplorer² code base was just dandy and greatly appreciated. The idea was to copy/paste reusable parts, which I thought it would be quite straightforward, but in the end this has turned out to be quite a substantial upgrade (150K+ of code) touching some fundamental parts of 2xExplorer. I regret that some of the improvements are clearly intended for gurlies (GUI stuff, impressive yet devoid of substance) but it's a big world out there and they make 1 out of every 2 of total folk, so it's not good business sense to ignore their needs <g>. But I believe there are stuff in this Z1 upgrade to make even the most hardened of men happy, check out the summary:
+
+* Sticky selection mode revolutionizing keyboard item selection
+* New commands: hard-linking, split/merging
+* Improved command execution
+* More batch file templates and batch file generation from the find results pane
+* Better thought-out zipfolder handling
+* Copy names & copy thumbnail commands
+
+Catering for the kitten-adoring fairer sex there is on offer:
+
+* Single-click activation for views & tree
+* Hover expansion for tree nodes & hands-free activation
+* Infotips for items and dragged icons
+
+Moreover there are fundamental changes deep down in the file management subsystem that could go unnoticed — but very important nevertheless. Two of the most chronic disabilities of 2xExplorer, namely its taking the clipboard for a ride without warning and its substandard 32-bit arithmetic are a thing of the past. Ok, let me elaborate on these and other new features.
+
+
+1. STICKY SELECTION MODE ----------------------------
+
+This is the classic type of feature that looks unimportant but has the elegance and simplicity to change the way you use 2xExplorer for everyday tasks. [BTW it was a pain in the @rse to implement too, had to go through all sorts of loops and hoops].
+
+The standard behaviour of the windows list view control that underwrites both folder panes in 2x is not geared for building up an item selection pattern scattered along the view. Whenever you use the mouse or any keys, unless you hold down the <Control> key, your prior selection is gone. Although this is marginally inconvenient for plain selections, it is totally prohibitive for using tricks like incremental search for name or extension (i.e. typing characters to home in on some particular filename — hold <Shift> for a particular extension). 
+
+Enter the sticky selection mode. Once activated you can just remove your <Control> key and feed it to a passing dog (they'll eat anything if starved :). You just don't have to worry about maintaining the prior selection. Just click or type at will and the only thing you'll affect is the focused item. Anything you select sticks, hence the mode name. You can use the full range of selection commands like <Insert> and <Ctrl+Enter> without worry and you can roam the view from top to bottom using <Home> and <End> no problemo. As an extra usability incentive the <Space> key can be used to toggle the selected item's state in-place (like <Ins> but without moving down).
+
+In fact if there's one drag it's that it's now hard to _un_select things since they so stubbornly hold on to their status. You have to either click or press <Insert> or <Space> to toggle some item's selection state. The new command Mark | Unselect All <Alt+A> is also helpful.
+
+If you are like me and switch to sticky selection mode for good, you'll be glad to hear that there are more things you can do now without having anything selected. For many commands the focused item takes on the role of the "selection", e.g:
+
+* Item activation
+* Browse into folder
+* View or Edit file
+* Status bar information
+
+You'll still have to select things for normal file operations like copy/delete/etc. In general note that if there's any sort of selection this takes precedence for actions. The focused item is used as a substitute only when there's no selection. Sometimes this can catch you off guard; the other day I nearly deleted 2 important files when by the sheer inertia of prior use patterns I just clicked on a file and was about to hit <Del> when I realized there were more items selected off-view — that would have wiped out all 3 files! Checking the "Display delete confirmation dialog" in the Recycle bin property page suddenly looks like a good idea.
+
+So all in all, this is a neat usability improvement but some training and brain recalibration is in order so as to avoid mini disasters and dramas. But after a short while I expect this mode to really stick (pun intended). This mode is accessible via the (slightly modified) Mark menu and also there's a toolbar button for it.
+
+
+2. PASTE HARD LINKS ---------------------------------
+
+What is a hard link? Well, like a soft link, only harder <g>. Everyone is familiar with the "soft" variety in the form of shortcut files. These are like "pointers" (monikers is the official term) to something else in your filesystem but they are distinct from their target. A hard link on the other hand is like having the _same_ file in different locations on some partition of your hard disk. When you realize that despite this dispersal the file is stored only once (with a system akin to reference counting) then it all begins to make sense: having access to a file from many locations without the worry of wasting disk space or effort keeping all the "copies" up-to-date. If you change one instance in folder "A" then all the other images will automatically pick up the changes. This is simple to figure out if you consider that all the various links actually point to the same disk storage location. When you delete a file that has hard links, you don't actually delete the file, just the particular link instance; only after eliminating all the links (and the original source) will the disk storage be reclaimed. Hard link technology was available from at least as far back as NT4 but it didn't make front page news since M$ never offered any tools to harness their power.
+
+Ok, that's the theory, let's see how it all happens in 2x. You normally copy the file(s) you want to hard link _to_ using <Ctrl+C> or similar. Then instead of pasting in the intended destination you use the Paste Hard Link command from the new Actions menu. The first experience is bound to be unnerving since it feels like a copy was made, but a peek at the total free space and the speed of the "copy" will convince you that indeed something weird and magical took place. This is for all intents and purposes a ghost image of the original. If you need further convincing, just edit one of the 2 files and marvel at how the other one picks up the changes free of hassle.
+
+There are a few limitations in this hard linking business. First of all this is a NTFS-only technology, so win9x users or FAT32 partitions need not apply. Perhaps the sadder limitation is that you can't hard link to a file lying in another partition (e.g. from a network drive to a local space); all linked instances have to be in the same logical partition. I think that the limit for hard link images is 1024 per file, but surely that's no problemo. Lastly you can't hard-link folders, but 2x has a nice workaround for this. When you copy a folder and then Paste Hard Link for it, 2x automatically recreates the original folder tree structure behind the scenes and inserts hard links to the contained files. So the target folders are real but the files are proper hard links. Neato.
+
+This is only too nice, but from a practical point of view what are the advantages (if any) introduced by hard links? Why would you want to use them? (we may all want to consult some seasoned Unix user for advice since they are familiar with hard links more than us Windows folk). The textbook "hello world" example here is to have a certain range of header files shared via hard-linking across various projects. All are seemingly local to a particular project folder but they are actually sourced from a centralized repository. 
+
+But a word of warning is in order. I have discovered that certain programs follow a really daft procedure when saving files which destroys hard links. I was horrored to discover that the old internal 2x's editor was one of them (!) — thanks to MFC doing stupid things behind our backs. Tell me if you don't find this stupid: instead of saving directly in the original file, a temporary file is created, changes saved there and then the original file is overwritten; hence the original link relationship is lost and you are left with 2 distinct files. Changes from now on won't propagate to the original. I don't get it at all; what's the competitive edge you get? Anyway, there are loads of unanswered questions in life, and besides you'll be glad to hear that I have patched 2x's internal editor for this glitch; editor² is fine too. Unfortunately heavy duty editors like Developer Studio were also written in MFC — she rubbish! — and destroy hard links upon saving, which makes a shambles out of the link-shared header file example above. So before launching your linking strategy make sure that your editing tools are link-aware and not destructive like Developer Studio. Or turn all such files to read-only.
+
+Still all's not lost. The other night I had an alcohol-assisted inspiration. I mostly work on a multi-boot notebook that has both win98, 2000 and XP for all these cross-platform tests I need to do. This means 3 separate installations for all things like developer studio, office tools et cetera, which doesn't help the hard disk space at all. But think about it folks. If you install all programs on the _same_ NTFS partition (let's forget win98) there's an interesting possibility. You start by doing 2 separate installations for each OS but you can reclaim disk space a posteriori by merely copying one of the installation folders and pasting it onto the other via hard linking. Now stay with me folks, this is not as silly as it seems <g>. The overwriting of common files will be releasing space since instead of 2 copies of the same file you'll be left with 2 images to a common file. That would keep both registry & disk and thus man+dog happy. Who says alcohol is bad for you? Ok, I admit this requires a bit further (sober) investigation, especially for avoiding situations where e.g. a DLL has the same name in the 2 installations but the files are actually different, but think of the possibilities! Any brave souls that go ahead with this test please keep in touch for the testimonials.
+
+
+3. SPLIT AND MERGE FILES ----------------------------
+
+When was the last time you used a floppy disk? I use them all the time to synchronize my home & work computers. Nice and simple and you don't need fancy hardware and expensive software for CD bootlegging operations. Have you ever found yourselves in the predicament where a file is just too big to fit on a floppy? Well the new split/merge command duo has just solved this problem.
+
+It's all very simple. During phase #1 you select a file and specify the split size. 2x will chop up the original in as many files as necessary up to this split size. These files have extensions like .001, .002 etc, for convenient sorting. You can then place the chopped files on floppies and take a hike. Over at the office headquarters, you copy the fragments back on hard disk, select them and do a Merge to get the original file.
+
+Note that the selected files are merged in the order shown in the active pane. If they are in the wrong order (e.g. file .002 preceding .001) the merge will not recreate the original file but some twisted alter ego thereof. 2x will kindly warn you when such an imminent blunder is detected. But once you have files sorted in the proper order from .001 up to .999 or what have you, you have nothing to worry. Also note that the merge command isn't limited to only work with files previously split. You can elect to merge any bunch of files if you so please — because it sounded like a good idea at the time — although you may want to have a confidential chat with your local publican / licence-holder for the deep unconscious source of all these unfathomable urges <g>
+
+The split/merge command is not just for floppy-happy technological laggards like this author. I can envisage all sorts of possible applications, like chopping up a large file into manageable portions prior to emailing them as attachments etc. You'll find the split/merge commands in the new Actions menu, too (it also contains some commands previously found elsewhere).
+
+
+4. COMMAND EXECUTION --------------------------------
+
+As you know (?) the address bar recognizes 2 kinds of commands to execute, depending on the prompt character you type: a "$" will launch a DOS command and ">" a generic windows program. The special template tokens $L/$R/$N can be used as per the batch file generator providing the building blocks for reusable commands stored in the history list and accessible via the <Ctrl+F10> shortcut.
+
+Although there's nothing inherently wrong with the old system, it was nevertheless overhauled for even more flexibility. For example environmental string substitution (e.g. %WINDIR% will be substituted for "C:\winnt" or what have you) is now supported for both DOS and windows commands. Two new template tokens are introduced too, $P and $I, which stand for the focused item path and the inactive pane path respectively. These help break the assymetry that the original $L/$R (for left and right pane paths respectively) could introduce in commands. For instance whereas the command "$ copy $N $R" could only be used when the left (top) pane was active, its novel equivalent "$ copy $N $I" is valid from either left or right panes. A subtle yet important distinction this. The $P/$I tokens are naturally valid for proper batch file generation too, see further down for info on this subject.
+
+Also the windows command mode ">" got smarter and behaves exactly like Start | Run. In the past it could only find programs placed somewhere along the system PATH variable. This limitation went down the drain; if something cannot be found in the path, then the list of officially registered applications (those that have file types like .txt associated with them) is searched for a match. Even plain documents can be launched like "> readme.txt" although this only has a curiosity value since I can't imagine anyone opting to type rather than double-click — other than 500WPM type-meisters perhaps <g>
+
+Note that these improvements for the windows command execution will only work for the default mode. If you have manually tweaked "szShellCmdPreample" in the registry you won't get the new command location gimmickry. You may thus want to consider resetting this option to its default empty string.
+
+
+5. BATCH FILES FROM FIND RESULTS WINDOW -------------
+
+The batch file generation capability of 2xExplorer is one of its stronger assets. The find file results window is no match for scrap frames (a la xplorer²) but at least now it can build batch files for the items it contains. The drill is the usual one: item selection followed by the proverbial right-click and presto you have access to the full might of the batch templates, including the new $P and $I constructs. Let me remind the home viewers that the idea with batch file generation is that you provide one (or more if comma-separated) templated command(s) which is then applied to all the files you have selected. It's like a buy one get 10 free offer and it doesn't take an inferential logic guru to figure out it makes sense and saves you time and typing.
+
+Batch file execution here has an interesting twist. There's no such thing as "current directory" as far as the find results window is concerned. That is determined by whichever pane is active, be it the left or right. Since the find results window shows items which reside in many directories (sorry, I meant folders :) unqualified $N tokens are more likely than not going to get you into trouble. You can spare yourselves the aggro using the new $P token which really shines in this context, since it represents the path of each individual item, regardless of its location. Sweet!
+
+The new $P and $I tokens are "documented" in the slightly revised batch build dialog. You'll be glad to hear that the actual batch script viewer has gotten bigger and I even threw in a couple of scroll bars free of charge, augmenting your "user experience" <g>
+
+
+6. USABILITY PROPERTY PAGE --------------------------
+
+"Why can't I single-click to activate things like in explorer?" or "Why doesn't the tree automatically expand its nodes when I hover above it?" are the most typical questions exemplifying the kind of aggravation I used to receive from (predominantly) nagging female users <g>. Well ladies, your wish was granted! A whole new property page in the View | Options dialog caters for such usability issues. (NB: I had to break my typical policy of having registry tweaks for such details since I gathered that the target audience — poor cute things! — would have rather lengthy head-scratching sessions following directives like "goto your registry and edit this and that..."; so I added a property page to save them the trip down the Town Hall messing about with the Mayor's stationery ;)
+
+On a more serious note, you get to control things like single-click activation for both views and tree, fine-tune what happens after you activate something in the tree, etc. Note that if you opt for single-click activation for the tree you get "hands-free" activation bundled in the bargain, i.e. you can browse into folders without pressing the <Enter> key. You can pace up and down in the tree branches (using the arrow keys) and whenever you stop for a breather you have the selected folder loaded automatically in the active pane. [Come to think about it, tree-roaming squirrels worldwide would love such an automated facility for nuts, no? <g>]. But man or squirrel beware: This may generate many a false alarm and general time-wasting when you accidentally have a longer pit-stop than planned, since you may unintentionally open folders that happen to lie inbetween your intended A to B. You have to stay focused all the time, which is a bit too much hassle for my personal taste. The default wait state before this autoCD kicks in is 1.5 seconds. You can make this shorter or longer to taste, editing the "msTreeAutoCDDelay" registry value (under MainFrame Settings key). This value is in milliseconds where 1.5 secs == 1500. Don't you start harassing the Mayor now! — he's a busy man and has all these parking tickets to process <g>
+
+Single-click for the tree is bad enough but for views it leads to horrific usability patterns. Ok, one saves an extra click per activation, but personally I spend most of my time selecting rather than activating. How can peoples manage with this track-(hover)-select thingme is completely beyond me. The new sticky selection mode is absolutely incompatible with all this palava. A final word on this matter: early windows 95 platforms without some recent version of Internet Explorer on board won't get all these "usability" "improvements" — what a misnomer if there ever was one! Never mind my nagging though <g>, I'm only sour for caving in under heavy popular demand for features that aren't to my personal taste. Besides, there are some useful stuff on this property page, too.
+
+Take infotips for instance. Post win2000 you can have some useful information pop-up as a tooltip window when you hover on some item in a list view. Not the standar tooltips mind, these are just lame pains in the neck popping up with naff info that you could have checked on the status bar anyroad. Thankfully you can do much more important things with infotips showing information like file comments and other stuff that are not available in 2xExplorer due to its 3-column limitation. More on infotip power-ups will follow in the form of a tricks'n'tips artikel in due course. Did you check the previous 2 articles in the series at the forum? don't delay, go to http://www.netez.com/bbs/ today!
+
+The final item in the usability page is my favourite. If you are like me and use the list mode exclusively (from View | Pane style menu) you may find annoying the default column autosizing behaviour of the control. In fact you may find it sickening. It only takes one item with a long-ish filename to have the columns overstretched way too far (like the USA case against Saddam — you people need to stay cool; we don't need no more wars). Leaving my political hat to the side, the max width box remedies this very situation and stops your view looking silly by placing an upper column width limit you are comfortable with. I set it to 150 pixels so all items longer than that are cropped (you can still unwrap the full name using the tooltip). Setting this to 0 reverts to the default unconstrained behaviour. Note that this doesn't affect any other view style (e.g. details) just the list mode. [Hang on! who's that guy with the suit and sunglasses staring at me from behind that tree? Oh-no! It's down by law all over again! I didn't do it officer! Io no sonno la terroristra! I am a good egg me! <g>]
+
+
+7. MISCELLANEOUS STUFF ------------------------------
+
+What can you buy for someone who has all the gimmicks already? It's all about marginal improvement and homogenization, squeezing up the last drops of efficiency improvement potential left.
+
+COPY NAMES COMMAND. There are quite a few different ways to copy path+file names open to imaginative minds. One is using the address bar, or <F2> for a dummy rename, and yet another via batch file generator with a $P\$N combo. Admitedly none was particularly snappy and people felt physically exhausted after all this to-ing and fro-ing. You may put your antiperspirant spray to the side from now on though, since the new <Alt+C> shortcut (Edit menu) is totally sweet. You get all the selected names inserted in the clipboard in a swift stroke. On top of that you can automatically get the short (DOS) 8.3 pathnames if you hold down <Shift> at the same time (i.e. <Alt+Shift+C> all simultaneously). I regret that this command will send a number of context-menu based pathname copy solution provider applications into receivership and/or forced administration.
+
+ZIPFOLDER DUALITY. Some users don't like this "zip files as folders" browsing capability introduced in winXP (and sort of in 2000 too). In an attempt to offer the best of both file and folder worlds, you can now view the byte size of the zip instead of the utterly useless <folder> indicator for the size column. They are also treated as files for comparisons, synchronization, viewing and whatnot. Hopefully more people will find them less of a handfull to work with whilst enjoying the direct browsing of their contents. And this time it will work for winXP too straight out of the box, fingers crossed.
+
+COPY PREVIEW IMAGE. The artistically oriented among you will surely rejoice at this new facility which inserts a bitmap image of the item preview shown in the thumb-bar straight into the clipboard, using this new command from Edit menu. This saves you a <PrintScreen>, crop and re-copy combo, not to mention the visit to IrfanView or what have you for doing all that preposterously long series of steps — in fact I consider meself lucky that nobody has sued me for damages or/and loss of productivity yet <g>. But now it's all about image acquisition made easy! Note that you need to have the thumb bar visible for this to work but surely that's not much to ask, no?
+
+MIND THAT CLIPBOARD. The old self of 2xExplorer used up the clipboard like as if it was it's own back yard, showing no respect whatsoever to its contents. Be it drag-dropping or merely deleting files, it would take over the clipboard for satisfying it's selfish and lazy-@rse-programmer motives. This long standing callous behaviour has now been reformed into a new era of clipboard-friendliness and general political correctness. Now if you place some text in the clipboard you may expect to find it there after a series of file operations within 2x — unless of course you deliberately place file items in there yourselves with <Ctrl+C>.
+
+HUGE FILE AWARENESS. Another age old problem eliminated. Not many people have files bigger than 4GB but for all server administrators out there handling terrabyte log files, this 64-bit enabled era is for you. 2x was sent back to skool to make amends for its substandard numeracy skills, and I am happy to say it has graduated with full honours into a big number expert handler. This has sweeping effects throughout the program including the ailing folder data <Ctrl+D> command. That should cover you till the next millenium as long as you keep it below the 18,446,744,073,709,551,616 byte barrier. Try pronouncing _that_ number and/or imagine how many Lamborghinis you could afford with that kind of figure showing up in your bank account...
+
+PANE SCROLLING GLITCH. 2x had this glitch whereupon if you scrolled a pane using the scroll bars so that the focused item went out of view, you would have found yourself in a predicament when activating the other pane, since 2x would whimsically destroy your carefully laboured positioning. Some users found this ordeal quite disconcerting and teat-irritating. This behaviour was "documented" in FAQ# 22, which is a nice little trick I learnt from little$oft converting bugs to "features" <g>. Fear no more since this glitch is a thing of the past. Now 2x won't care showing the focused item for inactive views; it will only enforce the focus visibility for the active pane. Cloud 9 revisited.
+
+DRAGGED ICONS. When you drag a single item and have windows 2000 or better you'll see this new gizmo offered for your visual gratification. If you drag a bunch however I'm afraid it's back to the trusty rectangular indicator. There's no easy way to obtain the bitmap of more than one icon at a time and I couldn't possibly consider wasting time & effort on this clearly useless feature, devoid of all practical value except perhaps for impressing adolescent/spotty yoof, taking their minds off ice cream.
+
+DRIVEBAR ICONS IN FULL COLOUR. No more the color starved pathetic excuses of drive icons for XP users. Marvellous.
+
+RENAME CORRECTIONS. Now if you rename something and the operation fails (e.g. due to illegal characters or duplicate filenames) 2x will allow you to correct your mistake rather than leaving you stranded & having to do the whole drill from scratch.
+
+SELECT ALL IN FIND RESULTS WINDOW. Long overdue <Ctrl+A> shortcut is finally here.
+
+UNIX TEXT PRINTING BUG. The other day I was amazed printing some text file on Unix (LF as end of line marker instead of the normal CRLF) through the internal viewer, when a print job of around 5000 (!) pages was generated. If you think that the file was 1 page at most, applying simple nonmonotonic reasoning rules will invariably hilight a slight glitch at play. Apparently this is a documented (Q284948) "feature" of the richedit control. Thanks mikro$oft! Unfortunately there's no officially recommended patch so what I did results in an extra blank page, but still that's better than 4998 blank pages, surely! You'll be glad to hear that the external editor² doesn't suffer from this problem, if you follow FAQ# 24 and ensure a decent version of the control exists on your system.
+
+ENVIRONMENTAL VARIABLES IN PATHS. The address bar now understands paths that include environmental variables like %TEMP% etc. What a jolly good idea!
+
+FIND FILE NAMES. The "Named" box in Find files or folders dialog will now automatically add "*" characters at the beginning & end of the name if it doesn't already contain any wildcard characters itself. That makes it work like in the windows find box. If you want to get back to the behaviour of previous versions, set the "bAutoPadWildcard" registry value to 0.
+
+
+
+All righty then, that's all the new features list you need to know about (hidden agenda here? Is it easter yet? ;). After nearly four (!) years of continuous development it is the end of the line for 2xExplorer. It has been a pleasant trip and I hope you enjoyed the ride — I most certainly did! But you can't go on living on borrowed parts. Omega is the last letter in the Greek alphabet and the last chapter in the 2x saga. It's all too pompus and circumstantial, I know, but it cannot be helped.
+
+For an ever more agreeable file management experience, with loads of columns, bang-on autorefresh capabilities, scrap frames, break-neck read speeds, general performance and whatnot, all in an outfit half the size (expected) of 2xExplorer you'll have to wait for yours trully to complete that xplorer² program, which shouldn't be more than the 4 years it took for the original 2xExplorer project. Oh no! But ask any motivational guru and they'll tell you: prolonged expectation periods lead to increased gratification.
+
+See you dudes!
+Nikos
+
+-------------------------
+WWW:    http://www.netez.com/2xExplorer
+Forum:  http://www.netez.com/bbs/

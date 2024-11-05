@@ -1,0 +1,591 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+LaunchReceiver
+</name>
+</assembly>
+<members>
+<member name="T:Server.My.Resources.Resources">
+<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+<member name="P:Server.My.Resources.Resources.ResourceManager">
+<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member>
+<member name="P:Server.My.Resources.Resources.Culture">
+<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member>
+<member name="T:Server.AsyncSocket">
+ <summary>
+ A class that encapsulates the raw functions of the Socket.
+ </summary>
+</member>
+<member name="M:Server.AsyncSocket.GetData">
+ <summary>
+ Gets the first object (byte array) in the buffer and removes it.
+ </summary>
+</member>
+<member name="M:Server.AsyncSocket.BufferCount">
+ <summary>
+ Gets a value that contains the number of items in the buffer.
+ </summary>
+</member>
+<member name="M:Server.AsyncSocket.ReceiveCallback(System.IAsyncResult)">
+ <history>
+ 06-09-2006 Added ObjectDisposedException to prevent
+             Close() from generating an error.
+ </history>
+</member>
+<member name="M:Server.AsyncSocket.Send(System.Byte[])">
+ <history>
+ 06-12-2006 Added support for buffer size (for send progress)
+ </history>
+</member>
+<member name="M:Server.AsyncSocket.ProcessIncoming(System.Byte[],System.Int32,System.String,System.Int32)">
+ <summary>
+ Processes raw data that was received from the socket and places it into the appropriate buffer.
+ </summary>
+ <param name="byt">The raw byte buffer containing the data received from the socket.</param>
+ <param name="iSize">The size of the data received from the socket (reported from the EndReceive).</param>
+</member>
+<member name="M:Server.AsyncSocket.FreeByte(System.Byte[])">
+ <summary>
+ Determines which byte value was not used in the byte array.
+ </summary>
+ <param name="byt">The byte array to check.</param>
+</member>
+<member name="M:Server.AsyncSocket.EncloseByte(System.Byte,System.Byte[])">
+ <summary>
+ Encloses a byte array with another byte.
+ </summary>
+ <param name="byt">A byte to enclose around a byte array.</param>
+ <param name="bytArr">The byte array that needs a byte enclosed around it.</param>
+</member>
+<member name="M:Server.AsyncSocket.AppendByte(System.Byte[],System.Byte[])">
+ <summary>
+ Combines two byte arrays.
+ </summary>
+</member>
+<member name="T:Server.WinsockDesigner">
+ <summary>
+ Winsock designer class provides designer time support for the Winsock component.
+ </summary>
+ <history>
+ 06-09-2006 Added
+ </history>
+</member>
+<member name="T:Server.WinsockActionList">
+ <summary>
+ Provides the action list for the Winsock component during design time.
+ </summary>
+ <history>
+ 06-09-2006 Added
+ </history>
+</member>
+<member name="T:Server.WinsockStateChangingEventArgs">
+ <summary>
+ Provides data for the Winsock.StateChanged event.
+ </summary>
+</member>
+<member name="M:Server.WinsockStateChangingEventArgs.#ctor(Server.WinsockStates,Server.WinsockStates)">
+ <summary>
+ Initializes a new instance of the WinsockStateChangingEventArgs class.
+ </summary>
+ <param name="oldState">The old state of the Winsock control.</param>
+ <param name="newState">The state the Winsock control is changing to.</param>
+</member>
+<member name="P:Server.WinsockStateChangingEventArgs.Old_State">
+ <summary>
+ Gets a value indicating the previous state of the Winsock control.
+ </summary>
+</member>
+<member name="P:Server.WinsockStateChangingEventArgs.New_State">
+ <summary>
+ Gets a value indicating the new state of the Winsock control.
+ </summary>
+</member>
+<member name="T:Server.WinsockErrorEventArgs">
+ <summary>
+ Provides data for the Winsock.ErrorReceived event.
+ </summary>
+</member>
+<member name="M:Server.WinsockErrorEventArgs.#ctor(System.String,System.String,System.Net.Sockets.SocketError,System.String)">
+ <summary>
+ Initializes a new instance of the WinsockErrorEventArgs class.
+ </summary>
+ <param name="error_message">A String containing the error message.</param>
+ <param name="function_name">A String containing the name of the function that produced the error.</param>
+ <param name="error_code">A value containing the socket's ErrorCode.</param>
+</member>
+<member name="P:Server.WinsockErrorEventArgs.Message">
+ <summary>
+ Gets a value containing the error message.
+ </summary>
+</member>
+<member name="P:Server.WinsockErrorEventArgs.Function">
+ <summary>
+ Gets a value containing the name of the function that produced the error.
+ </summary>
+</member>
+<member name="P:Server.WinsockErrorEventArgs.ErrorCode">
+ <summary>
+ Gets a value indicating the error code returned by the socket.
+ </summary>
+ <remarks>If it wasn't returned by the socket, it defaults to success.</remarks>
+</member>
+<member name="P:Server.WinsockErrorEventArgs.Details">
+ <summary>
+ Gets a value containing more details than the typical error message.
+ </summary>
+</member>
+<member name="T:Server.WinsockClientReceivedEventArgs">
+ <summary>
+ Provides data for the Winsock.ConnectionRequest event.
+ </summary>
+</member>
+<member name="M:Server.WinsockClientReceivedEventArgs.#ctor(System.Net.Sockets.Socket)">
+ <summary>
+ Initializes a new instance of the WinsockClientReceivedEventArgs class.
+ </summary>
+ <param name="new_client">A Socket object containing the new client that needs to be accepted.</param>
+</member>
+<member name="P:Server.WinsockClientReceivedEventArgs.Client">
+ <summary>
+ Gets a value containing the client information.
+ </summary>
+ <remarks>Used in accepting the client.</remarks>
+</member>
+<member name="P:Server.WinsockClientReceivedEventArgs.ClientIP">
+ <summary>
+ Gets a value containing the incoming clients IP address.
+ </summary>
+</member>
+<member name="P:Server.WinsockClientReceivedEventArgs.Cancel">
+ <summary>
+ Gets or sets a value indicating whether the incoming client request should be cancelled.
+ </summary>
+</member>
+<member name="T:Server.WinsockSendEventArgs">
+ <summary>
+ Provides data for the Winsock.SendComplete event.
+ </summary>
+ <history>
+ 06-12-2006 Changed name from WinsockSendCompleteEventArgs to
+             WinsockSendEventArgs (SendProgress uses same type).
+ </history>
+</member>
+<member name="M:Server.WinsockSendEventArgs.#ctor(System.Int32,System.Int32)">
+ <summary>
+ Initializes a new instance of the WinsockSendEventArgs class.
+ </summary>
+ <param name="bytes_sent">The total number of bytes sent.</param>
+ <param name="bytes_total">The total number of bytes that were supposed to be sent.</param>
+</member>
+<member name="P:Server.WinsockSendEventArgs.BytesSent">
+ <summary>
+ Gets a value indicating the number of bytes sent.
+ </summary>
+</member>
+<member name="P:Server.WinsockSendEventArgs.BytesTotal">
+ <summary>
+ Gets a value indicating the total number of bytes that should have been sent.
+ </summary>
+</member>
+<member name="P:Server.WinsockSendEventArgs.SentPercent">
+ <summary>
+ Gets a value indicating the percentage of bytes that where sent.
+ </summary>
+</member>
+<member name="T:Server.WinsockDataArrivalEventArgs">
+ <summary>
+ Provides data for the Winsock.DataArrival event.
+ </summary>
+</member>
+<member name="M:Server.WinsockDataArrivalEventArgs.#ctor(System.Int32,System.String,System.Int32)">
+ <summary>
+ Initializes a new instance of the WinsockDataArrivalEventArgs class.
+ </summary>
+ <param name="bytes_total">The number of bytes that were received.</param>
+</member>
+<member name="P:Server.WinsockDataArrivalEventArgs.TotalBytes">
+ <summary>
+ Gets a value indicating the number of bytes received.
+ </summary>
+</member>
+<member name="T:Server.WinsockStates">
+ <summary>
+ Enumeration containing the various Winsock states.
+ </summary>
+</member>
+<member name="F:Server.WinsockStates.Closed">
+ <summary>
+ The Winsock is closed.
+ </summary>
+</member>
+<member name="F:Server.WinsockStates.Listening">
+ <summary>
+ The Winsock is listening (TCP for connections, UDP for data).
+ </summary>
+</member>
+<member name="F:Server.WinsockStates.ResolvingHost">
+ <summary>
+ The Winsock is attempting the resolve the remote host.
+ </summary>
+</member>
+<member name="F:Server.WinsockStates.HostResolved">
+ <summary>
+ The remote host has been resolved to IP address.
+ </summary>
+</member>
+<member name="F:Server.WinsockStates.Connecting">
+ <summary>
+ The Winsock is attempting to connect to the remote host.
+ </summary>
+</member>
+<member name="F:Server.WinsockStates.Connected">
+ <summary>
+ The Winsock is connected to a remote source (client or server).
+ </summary>
+</member>
+<member name="F:Server.WinsockStates.Closing">
+ <summary>
+ The Winsock is attempting to close the connection.
+ </summary>
+</member>
+<member name="T:Server.WinsockProtocols">
+ <summary>
+ Enumeration containing the various supported network protocols.
+ </summary>
+</member>
+<member name="F:Server.WinsockProtocols.Tcp">
+ <summary>
+ The Winsock should use the connection-based TCP protocol.
+ </summary>
+</member>
+<member name="F:Server.WinsockProtocols.Udp">
+ <summary>
+ The Winsock should use the connectionless-based UDP protocol.
+ </summary>
+</member>
+<member name="T:Server.WinsockIPTypes">
+ <summary>
+ Enumeration containing the various supported IP protocols.
+ </summary>
+</member>
+<member name="F:Server.WinsockIPTypes.IPv4">
+ <summary>
+ The Winsock should use the IPv4 addressing scheme
+ </summary>
+</member>
+<member name="F:Server.WinsockIPTypes.IPv6">
+ <summary>
+ The Winsock should use the IPv6 addressing scheme
+ </summary>
+</member>
+<member name="T:Server.Winsock">
+ <summary>
+ Encapsulates the socket functionality into an easy to use VB6 like component.
+ </summary>
+ <author>Chris Kolkman</author>
+ <history>
+ 02-07-2007 Added support for IPv6 vs IPv4.
+ 07-12-2006 Fixed closing to support UDP listener closing.
+ 06-27-2006 Added support for UDP.
+ 06-12-2006 Added support for the SendProgress event.
+ 06-09-2006 Added catches for closing errors.
+            Added functionality to make the component thread-safe
+             (calls to a textbox in the ErrorReceived handler won't
+              error anymore).
+            Added ability to send/get System.Drawing.Bitmap images.
+            Modified some property names to be more consistent with other
+             controls (removed underscores).
+            Added action list (designer smart tags) support.
+ 06-08-2006 Basic functionality completed (sending/receiving string/files).
+            Disconnects handled (server doesn't yet detect pulled plug at
+              client.
+            Can send and receive up to 2GB of data (in one send command).
+ </history>
+</member>
+<member name="M:Server.Winsock.#ctor">
+ <summary>
+ Initializes a new instances of the <see cref="T:Server.Winsock" /> class.
+ </summary>
+ <remarks>Only thread safe if placed on a form (synchronizing object gets set automatically).</remarks>
+</member>
+<member name="M:Server.Winsock.#ctor(System.ComponentModel.ISynchronizeInvoke)">
+ <summary>
+ Initializes a new instance of the <see cref="T:Server.Winsock" /> class (thread-safe).
+ </summary>
+ <param name="Synchronizing_Object">The synchronizing object used to make this thread safe.</param>
+</member>
+<member name="E:Server.Winsock.DataArrival">
+ <summary>
+ Occurs when data arrives on the socket.
+ </summary>
+ <remarks>Raised only after all parts of the data have been collected.</remarks>
+</member>
+<member name="E:Server.Winsock.SendComplete">
+ <summary>
+ Occurs when sending of data is completed.
+ </summary>
+</member>
+<member name="E:Server.Winsock.Disconnected">
+ <summary>
+ Occurs when disconnected from the remote computer (client and server).
+ </summary>
+</member>
+<member name="E:Server.Winsock.Connected">
+ <summary>
+ Occurs when connection is achieved (client and server).
+ </summary>
+</member>
+<member name="E:Server.Winsock.ConnectionRequest">
+ <summary>
+ Occurs on the server when a client is attempting to connect.
+ </summary>
+ <remarks>Client registers connected at this point. Server must Accept in order for it to be connected.</remarks>
+</member>
+<member name="E:Server.Winsock.ErrorReceived">
+ <summary>
+ Occurs when an error is detected in the socket.
+ </summary>
+ <remarks>May also be raised on disconnected (depending on disconnect circumstance).</remarks>
+</member>
+<member name="E:Server.Winsock.StateChanged">
+ <summary>
+ Occurs when the state of the socket changes.
+ </summary>
+</member>
+<member name="E:Server.Winsock.SendProgress">
+ <summary>
+ Occurs when the send buffer has been sent but not all the data has been sent yet.
+ </summary>
+ <history>
+ 06-12-2006 Added
+ </history>
+</member>
+<member name="P:Server.Winsock.LocalPort">
+ <summary>
+ Gets or sets a value indicating the port the <see cref="T:Server.Winsock" /> control should listen on.
+ </summary>
+ <remarks>Cannot change while listening.</remarks>
+</member>
+<member name="P:Server.Winsock.MaxPendingConnections">
+ <summary>
+ Gets or sets a value that control the length of the maximum length of the pending connections queue.
+ </summary>
+ <remarks>Cannot change while listening.</remarks>
+</member>
+<member name="P:Server.Winsock.RemoteServer">
+ <summary>
+ Gets or sets a value that determines what server to connect to.
+ </summary>
+ <remarks>Can only change if closed or listening.</remarks>
+</member>
+<member name="P:Server.Winsock.RemotePort">
+ <summary>
+ Gets or sets a value that determines which port on the server to connect to.
+ </summary>
+ <remarks>Can only change if closed or listening.</remarks>
+</member>
+<member name="P:Server.Winsock.LegacySupport">
+ <summary>
+ Gets or sets a value indicating if Legacy support should be used or not.
+ </summary>
+ <remarks>Legacy support is to support VB6 winsock style connections.</remarks>
+</member>
+<member name="P:Server.Winsock.HasData">
+ <summary>
+ Gets a value indicating whether the buffer has data for retrieval.
+ </summary>
+</member>
+<member name="P:Server.Winsock.BufferSize">
+ <summary>
+ Gets or sets a value indicating the interal size of the byte buffers.
+ </summary>
+</member>
+<member name="P:Server.Winsock.SynchronizingObject">
+ <summary>
+ Gets or sets the synchronizing object making this control thread-safe.
+ </summary>
+</member>
+<member name="P:Server.Winsock.Protocol">
+ <summary>
+ Gets or sets the winsock protocol to use when communicating with the remote computer.
+ </summary>
+</member>
+<member name="P:Server.Winsock.IPType">
+ <summary>
+ Gets or sets the IP type to use when connecting to the remote computer.
+ </summary>
+</member>
+<member name="M:Server.Winsock.Listen">
+ <summary>
+ Places a <see cref="T:Server.Winsock" /> in a listening state.
+ </summary>
+</member>
+<member name="M:Server.Winsock.Listen(System.Int32)">
+ <summary>
+ Places a <see cref="T:Server.Winsock" /> in a listening state.
+ </summary>
+ <param name="port">The port to begin listening on.</param>
+</member>
+<member name="M:Server.Winsock.Close">
+ <summary>
+ Closes an open <see cref="T:Server.Winsock" /> connection.
+ </summary>
+</member>
+<member name="M:Server.Winsock.Accept(System.Net.Sockets.Socket)">
+ <summary>
+ Accepts a client connect as valid and begins to monitor it for incoming data.
+ </summary>
+ <param name="client">A <see cref="T:System.Net.Sockets.Socket" /> that represent the client being accepted.</param>
+</member>
+<member name="M:Server.Winsock.Connect">
+ <summary>
+ Establishes a connection to a remote host.
+ </summary>
+</member>
+<member name="M:Server.Winsock.Connect(System.String,System.Int32)">
+ <summary>
+ Establishes a connection to a remote host.
+ </summary>
+ <param name="remoteHostOrIP">A <see cref="T:System.String" /> containing the Hostname or IP address of the remote host.</param>
+ <param name="remote_Port">A value indicated the port on the remote host to connect to.</param>
+</member>
+<member name="M:Server.Winsock.LocalIP">
+ <summary>
+ Gets the local machine's IP address.
+ </summary>
+ <remarks>In the case a machine has more than one IP address it retrieves the first one.</remarks>
+</member>
+<member name="M:Server.Winsock.State">
+ <summary>
+ Gets the state of the <see cref="T:Server.Winsock" /> control.
+ </summary>
+</member>
+<member name="M:Server.Winsock.Send(System.Byte[])">
+ <summary>
+ Sends a raw byte array to a connected socket on a remote computer.
+ </summary>
+ <param name="byt">The byte array to send.</param>
+</member>
+<member name="M:Server.Winsock.Send(System.String)">
+ <summary>
+ Sends a string to a connected socket on a remote computer.
+ </summary>
+ <param name="data">The string to send.</param>
+</member>
+<member name="M:Server.Winsock.Send(System.Drawing.Bitmap)">
+ <summary>
+ Sends a System.Drawing.Bitmap to a connected socket on a remote computer.
+ </summary>
+ <param name="data">The image to be transmitted.</param>
+ <history>
+ 06-09-2006 Added
+ </history>
+</member>
+<member name="M:Server.Winsock.SendFile(System.String)">
+ <summary>
+ Sends a file to a connected socket on a remote computer.
+ </summary>
+ <param name="filename">The full path of the file you wish to send.</param>
+</member>
+<member name="M:Server.Winsock.Get(System.String@)">
+ <summary>
+ Gets the next value in the buffer as a string.
+ </summary>
+ <param name="data">A String that stores the returned data.</param>
+</member>
+<member name="M:Server.Winsock.Get(System.Drawing.Bitmap@)">
+ <summary>
+ Gets the next value in the buffer as a System.Drawing.Bitmap
+ </summary>
+ <param name="data">A System.Drawing.Bitmap that stores the returned image.</param>
+ <history>
+ 06-09-2006 Added
+ </history>
+</member>
+<member name="M:Server.Winsock.GetFile(System.String,System.Boolean)">
+ <summary>
+ Saves the next value in the buffer as a file.
+ </summary>
+ <param name="filename">The full path of the file you wish to save to.</param>
+</member>
+<member name="M:Server.Winsock.OnStateChanged(Server.WinsockStates)">
+ <summary>
+ Changes the state and raises the StateChanged event (thread safe).
+ </summary>
+ <param name="new_state">The state that the control is changing to.</param>
+</member>
+<member name="M:Server.Winsock.OnError(System.String,System.String,System.Net.Sockets.SocketError,System.String)">
+ <summary>
+ Raises the ErrorReceived event (thread safe).
+ </summary>
+ <param name="msg">A String containing the error message.</param>
+ <param name="func">A String containing the function in which the error originated.</param>
+ <param name="errCode">The ErrorCode object returned by the socket.</param>
+</member>
+<member name="M:Server.Winsock.OnConnectionRequest(System.Net.Sockets.Socket)">
+ <summary>
+ Raises the ConnectionRequest event, and closes cancelled connections (thread safe).
+ </summary>
+ <param name="sock">The new client socket that needs to be accepted.</param>
+</member>
+<member name="M:Server.Winsock.OnConnected">
+ <summary>
+ Raises the Connected event (thread safe).
+ </summary>
+</member>
+<member name="M:Server.Winsock.OnDisconnected">
+ <summary>
+ Raises the Disconnected event (thread safe).
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="M:Server.Winsock.OnSendComplete(System.Int32,System.Int32)">
+ <summary>
+ Raises the SendComplete event (thread safe).
+ </summary>
+ <param name="bytes_sent">The total bytes sent.</param>
+ <param name="bytes_total">The number of bytes that should have been sent.</param>
+</member>
+<member name="M:Server.Winsock.OnSendProgress(System.Int32,System.Int32)">
+ <summary>
+ Raises the SendProgress event (thread safe).
+ </summary>
+ <param name="bytes_sent">The total bytes sent so far.</param>
+ <param name="bytes_total">The number of bytes that need to be sent.</param>
+ <history>
+ 06-12-2006 Added
+ </history>
+</member>
+<member name="M:Server.Winsock.OnDataArrival(System.Int32,System.String,System.Int32)">
+ <summary>
+ Raises the DataArrival event (thread safe).
+ </summary>
+ <param name="totalBytes">The total number of bytes received.</param>
+</member>
+<member name="T:Server.WinsockMonitor">
+ <summary>
+ A "monitor" for the <see cref="T:Server.Winsock" /> class.
+ Holds all the functionality and calls back to the Winsock class to notify the user.
+ </summary>
+ <history>
+ 
+ </history>
+</member>
+<member name="M:Server.WinsockMonitor.Send(System.Drawing.Bitmap)">
+ <history>
+ 06-09-2006 Added
+ </history>
+</member>
+</members>
+</doc>

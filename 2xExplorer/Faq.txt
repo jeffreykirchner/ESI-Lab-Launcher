@@ -1,0 +1,195 @@
+---------------- FREQUENTLY ASKED QUESTIONS ----------------
+
+
+Here is a list of questions frequently asked by 2xExplorer users. Please consult this page first before sending an e-mail, so as to avoid querying for something that has been answered before. You may also try the respective FAQ page in the website, which may be more recent than this file:
+>>>> http://www.netez.com/2xExplorer/faq.html
+
+If you cannot find an answer in this FAQ, the second best chance for solving your problem is to check the support forum:
+>>>> http://www.netez.com/bbs
+You can do a keyword search there and more often than not you'll find a post with a similar problem which will be (hopefully) resolved.
+
+NOTE: The questions/answers are presently rather willy-nilly "organized", reflecting the order they were originally posed. In case the page gets too large and lengthy for comfort, use the Find <Ctrl+F> command of your browser to locate a (single) keyword that best represents your query.
+
+
+
+Q1. Will 2xExplorer ever support remote directory (FTP) reading in its panes?
+
+>>>> A. To be honest, I'm not a big FTP fan myself, so that prospect looks a bit grim for the present. However, there may just be a way to work around this problem, without my snaping any fingernails. A shell extension called WebDrive (see http://www.riverfrontsoftware.com) can map an FTP address as a local drive (in a similar fashion that network drives are mapped), so you'll be able to browse it using 2xExplorer or the standard explorer. In this way interested users get what they're after without me having to reinvent the wheel and rewrite half the operating system. My feelings about archive files (ZIP, RAR, etc.) are similar; unfortunately at this stage there's no known ZIP shell extension that would seamlessly integrate with 2xExplorer, like webdrive does...
+
+
+
+Q2. How come sometimes my network drives (on NT4) will not automatically refresh?
+
+>>>> A. 2xExplorer can automatically sense changes in the contents of its panes for nearly all drives attached to your system. As you understand, "nearly all" means that in some cases it goes deaf, as in the network drives connected to a NT machine. Here the situation is similar to the older versions, i.e. 2xExplorer will properly auto-refresh such deaf panes if and only if the change originated from within the program (e.g. copy/delete/etc.). That as usual won't extend to some context menu actions; head scratching is expected for zip files creation and similar. This behaviour is for both pure network and mapped drives. It does not appear for network drives on 9x machines but not too many people go networking on such OSs, dinnit? The resolution here is to manually press <Ctrl+R> to refresh some externally modified deaf pane.
+NOTE: <Ctrl+R> doesn't work in the tree pane; to force a refresh there you just need to collapse & re-expand the parent of the offending node.
+
+
+
+Q3. How can I map a network drive or format disks with 2xExplorer?
+
+>>>> A. There is no dedicated menu command in 2xExplorer to perform such operations but you can nevertheless perform such actions by clicking with the right mouse button on certain filesystem items and invoking the command from the standard shell context menu that appears. The items in question are located either on the desktop or in your "My Computer" folder. So for instance:
+* to map a network drive, right click on the "My Computer" icon (browse the Desktop first)
+* to format a floppy disk right click on its icon from within "My Computer" folder
+* to change the label of a disk, use its property sheet from within "My Computer" folder
+* and so on... (try right clicking on weird items for even more operations)
+
+There is a minor inconvenience involded to switch to the appropriate folder, but it's nothing compared to the trouble I would otherwise have to undergo myself reinventing the wheel to duplicate the performance offered already by the windows OS.
+
+
+
+Q4. Why can't I format a floppy disk?
+
+>>>> A. Windows will refuse to format a disk that some program (as 2xExplorer) have a lock on. A certain recipe for disaster therefore would be to be browsing the root "A:\", and then hit <Bksp> to access "My Computer" folder where the floppy disk icon resides (bearing the Format context menu command), since 2xExplorer current directory would still be on the floppy (MyComputer is not a filesystem folder). There are many workarounds that one can imagine, but the easiest would be to go upwards to My Computer folder from another root drive as e.g. "C:\". Naturally you should also make sure that no other program is accessing the floppy drive too.
+
+
+
+Q5. Why aren't files without extensions visible when the visual filter is set to "*.*"?
+
+>>>> A. The default visual filter that allows all files and folders to be shown in a pane is "*". This is not only shorter to type but it is also more accurate. The wildarg pattern "*.*" strictly corresponds to file names that contain a dot ('.'), so a name like "Untitled" without an extension (and hence lacking the dot) is not matched by the said pattern. Call me a "Details' enthusiast" if you must, but I can get very sensitive about such matters :-|
+
+
+
+Q6. How can I easily manage the toolbars in 2xExplorer?
+
+>>>> A. The toolbars in 2x are very flexible. They can be moved about, docked to different edges, or even be floating. To change their position, just grab them from an "empty" spot (or handle) and drag them about. The framework will display an outline of the target position, which may even be in a different window size and/or orientation (i.e. switch from vertical to horizontal and vice-versa). Press <Ctrl> while dragging to force some toolbar to float, or double-click on some empty spot.
+
+The folder tree is also hosted in a sizing "toolbar", which can be moved about and also sized to suit your needs. When the tree is quite large, you may have difficulties changing it's docking orientation from vertical to horizontal, but there's a simple trick to make your life easier: Force it to float first by pressing <Ctrl>, and shrink it down to a small-ish size. Then, when you drag it you'll find that it gets much more cooperative.
+
+
+
+Q7. How can I change the width/height of the folder selection combo box on the address bar?
+
+>>>> A. The width of the said combo box is usually automatically set by 2xExplorer, forcing it to take advantage of all the available horizontal space. Still you can control it's width for cases when the address bar is either floating or docked vertically (left or right edges). Although the size of the box cannot be altered from within 2xExplorer, there is a variable called "nFolderComboWidth" in the registry, where the program's persistent properties are kept. The easiest way to change it is to run "regEdit" using the Run command from the desktop's Start button, search for "2xExplorer" and click on the "Mainframe Settings" item where the said width controlling variable is contained (the full key name is "HKEY_CURRENT_USER\Software\ZabaraKatranemia Plc\2xExplorer\MainFrame Settings"). Similarly you can control the vertical drop extent by fiddling with a variable called "nFolderComboHeight".
+
+NOTE: you can only change these values after quitting 2xExplorer. You can experiment to find the size (in pixels) that best suits your specific display settings.
+
+
+
+Q8. Why does the DriveBar become transparent when the drive letters are enabled in Win95 (docked state)?
+
+>>>> A. This is a known glitch with toolbars showing text and images in early windows 95 systems. If you start using it the buttons will start to appear but that's hardly the point. To make matters worse the problem will repeat itself every time 2xExplorer will be started, but there is a workaround. The trick is to have the same driveBar orientation in both its docked and floating states. For instance, if you have the bar docked vertically, double-click on it to make it float and then resize the mini frame window into a vertical position. Now when you re-dock the driveBar it will be properly painted, including the next time round you start the program. The procedure is similar when you have the bar docked horizontally. Note that this problem does (should) not occur for Win98/NT4 and higher.
+
+
+
+Q9. Why won't 2xExplorer maintain the maximised/minimised state of its window when I restart it?
+
+>>>> A. 2xExplorer will automatically save its (normal) window position and restore it the next time the program is launched. However, if you want to start it in either maximised or minimised state then you'd have to tweak the properties of the shortcut that you use to launch 2xExplorer (usually kept on the desktop or in the Start menu). Right-click on it and invoke the Properties dialog; in the Shortcut tab locate the Run drop-down list box and instead of the default "Normal window" setting select whatever takes your fancy (i.e. Minimised or Maximised). 2xExplorer will honour your request whilst retaining the normal window size and position as usual.
+
+
+
+Q10. Why won't 2xEditor read filenames containing spaces?
+
+>>>> A. You can associate 2xEditor to handle all text (*.txt) files on your computer, but you should guard against the mentioned pitfall. 2xEditor will read properly filenames containing spaces as long as the whole name is enclosed within double quotation marks. So when you edit the FileTypes associations (from the windows explorer) for the text files the command that corresponds to the "open" verb should contain the "%1" argument as follows:  c:\YourExePath\2xEditor.exe "%1". Note that you have to include the quotes in the command, else nowt with spaces will work.
+
+
+
+Q11. 2xExplorer takes too long to load and/or exit, what's wrong?
+
+>>>> A. Unless you still have a trusty 486 or something :) 2xExplorer should be quick to both launch and exit. If you notice any sluggishness at startup, and especially during the "shutdown" of the program, this may be an indication that the registry information key is corrupted. This likelihood is a near-certainty if the problem appears after you've played around with toolbars, docking them in various places and generally moving them around a lot.
+
+The easiest fix is to run the registry editor regedit.exe and delete the whole HKEY_CURRENT_USER\Software\ZabaraKatranemia Plc\2xExplorer key and run the program again. However, if you are confident with editing the registry you needn't discard all your favourite options just to fix this problem. It will suffice to delete all the "MainFrame Settings-*.*" subkeys (where *.* stands for Bar0, Bar1,... and Summary). Then order should return. I can't really tell if this is a bug with 2xExplorer or with MFC itself, but it is quite rare anyway.
+
+
+
+Q12. Some accelerator keys do not work sometimes although the respective command looks enabled.
+
+>>>> A. This is a bug that can be quite annoying, as one of the commands that may be affected is the <Alt+left> arrow (and the alt+right arrow too) used to traverse back and forward within the navigation list. Unfortunately its cure is not straightforward since this is a documented bug in the MFC libraries 2xExplorer relies for its functionality. The accelerators affected are those that correspond to commands that appear in submenus, like the back/forward command mentioned, the <Ctrl+F11> command for storing a selection, and so on. On top of everything else, this bug appears intermittently and I haven't discovered its mechanizm yet. Still, there's a simple cure: whenever you come accross some accelerator that is blocked where it should be working (or vice-versa) all you have to do is to manually open the submenu that contains the affected command and order should return.
+
+
+
+Q13. Where is the 'File Type' column in Details view?
+
+>>>> A. Don't bother searching for that column, it's nowhere to be found in 2xExplorer. Since file type is fully determined by the MS/DOS filename extension (e.g. ".txt" for text files), there's no need to waste horizontal space and resources for a separate type column. The catch is that you must make sure that the MS/DOS extensions are visible on your desktop and hence in 2x. If you can't see no extensions, run windoze explorer, and select: FolderOptions | View | 'Hide File Extensions For Known File Types'; make sure this checkbox is cleared (a similar route is available for older win95 users). Then all your type information will be available from the filename. Keep in mind that 2x sorts files by extension as well as name.
+
+
+
+Q14. What's the purpose of the Root/Current <Ctrl+Q> button on the driveBar?
+
+>>>> A. This buttons implements the functionality offered by the path descriptors "C:\" and "C:", i.e. changing directory to the root or current drive of some device. When pressed, all drivebar buttons will take you to the root folder of the intended device, whereas if not, you'd get into the last folder you were browsing on that drive (current), whatever this may have been. Note that it is possible to have the current coincide with the root, e.g. for drives you haven't browsed during some 2x session.
+
+
+
+Q15. How can I make 2xExplorer the default application for all my folders?
+
+>>>> A. I wouldn't recommend replacing the standard explorer altogether, but it's very easy to add a "verb" that will give you the chance to open folders with 2xExplorer. From explorer edit the "File Type" associations (View | Folder Options | File Types tab). It's not very intuitive, but if you scroll down you'll find a Folder "file type", which you can Edit as usual. Create a new verb e.g. "2xOpen" and edit its action. This should have "c:\YourPath\2xExplorer.exe" "%1" as the new command line (including the quotation marks, too). Now whenever you right click on a folder, there's going to be a "2xOpen" item in the context menu.
+
+
+
+Q16. The ThumbBar item in the View menu is permanently disabled.
+
+>>>> A. 2xExplorer can only display thumbnails if your windows explorer has a 'Web View' option, i.e. active desktop is installed. If you have an early win95 or NT4 system without the desktop update, the required infrastructure for thumbnails is missing. The only workaround is to download the active desktop upgrade from mikro$soft, or upgrade your windows OS altogether.
+
+
+
+Q17. The ThumbBar won't show previews for some image files.
+
+>>>> A. Thumbnail blues ain't over even if you have some recent windows OS. If you install some graphics program that messes with the registry, chances are that both 2x and the regular explorer will lose the capacity to show previews for some (or all) graphics formats. This "feature" is well known, and there's a mikro$oft-blessed workaround in their website: Q192573 - PRB: Image Previews Not Displayed in Windows Explorer. Goto http://support.microsoft.com/support/kb/articles/Q192/5/73.ASP to check it out.
+
+
+
+Q18. I can't see previews for all M/S Office documents.
+
+>>>> A. Some office applications like PowerPoint automatically include previews in their files, hence ".ppt" files always have thumbnails visible in 2xExplorer. Other applications like Word need some coercing for including previews in the ".doc" files. You'd have to use the File | Properties menu, pick the Summary tab and check the "Save preview picture" box. Then you'll be able to see previews of word files, too.
+
+
+
+Q19. The "Undo" item in Edit menu is permanently disabled.
+
+>>>> A. To put it simply, you can't undo file operations within 2xExplorer. It's all mini$oft's fault (of course :), who didn't have the vision to expose this functionality for other applications. Still, if you get in trouble after doing something you didn't really mean in 2x, you can undo by opening an explorer window (or just right clicking anywhere on the desktop) and selecting the Undo command from there. Strange as this may seem, explorer can undo operations originating from 2xExplorer.
+
+
+
+Q20. How can I get more than 6 bookmarks?
+
+>>>> A. 2xExplorer will just give you 6 direct bookmarks, and there's no way around this. However, you can use some cunning to get virtually unlimited bookmarks, managed by you. The way I do it is to create a folder called "C:\MyBookmarks" (the name is irrelevant) where I add LINKS (shortcuts) to favorite folders. Then, I assign one of the 6 2x direct bookmarks (<Ctrl+0> is my choice) to "C:\MyBookmarks". I grant you that this is not as fast as a direct <Ctrl+xx> bookmark, since it involves an extra jump, but think of all the extra favourite folders you can manage! You can even organize relevant shortcuts in their own subfolders within "C:\MyBookmarks".
+
+
+
+Q21. How can I pick a font for 2xExplorer's lists?
+
+>>>> A. 2xExplorer uses whatever font your desktop/explorer uses for the list and tree views. If you want to change it, you'll have to go through the standard procedure "Control Panel | Display settings | Appearance tab". In the "item" box select Icon and pick up your favourite font. This will be subsequently affect your whole system, desktop and 2xExplorer alike.
+
+
+
+Q22. 2xExplorer scrolls a contents pane away from where I want it to.
+
+>>>> A. If you read keyboard.txt, you'll see that 2x tries to keep the focused item (the one with the dotted rectangle around it) in view at all times. Some users use the mouse to scroll down/up a pane only to realize in disgust that 2x resets the original position after activating the other pane, if the old focused item happens to be obscured. Although this seems like a quirk to say the least, it's actually an intended and documented behaviour, since 2x is merely trying to bring the focused item in view. The workaround is to click on any item after you scroll down using the scrollbar, thus changing the focus and anchoring the pane at the current position.
+NOTE: this quirk was corrected in version Z1.
+
+
+
+Q23. How can I arrange the panes vertically instead of left/right?
+
+>>>> A. This layout is available but you'd have to "hack" the registry a little, as explained in registry.txt. You need to locate the "bUpDownPanes" value in [MainFrame Settings] key and change it to 1, after you quit 2xExplorer. Set it to 0 (the default) to get back to the original left-right arrangement. Obviously this is something you don't won't to be doing often, you need to decide which layout suits you best and stick with it. 
+NOTE: from version Z1 onwards you don't need to hack the registry like that. The pane alignment is controlled from View | Options | Usability property page.
+
+
+
+Q24. Editor² behaves "funny"; I can't edit or/and I cannot paste or/and whatever. What's the story?
+
+A. Editor² may go bezerk in a number of ways and in 99% of the cases it's all mikros~1 fault <g>. The system file riched20.dll which is used internally for the editing functions comes in two varieties. You can easily test which version you have by going to your windows system (or system32) folder and checking this file's properties (right-click etc.). If you have version 3 then all should be ok, however if you have any previous version (richedit v2, i.e. 5.0.xxx), then congratulations, you've just discovered the source of your problems! To establish order, you just need to find a copy of the newer riched20.dll v3.0 (or higher) and overwrite the old buggy version. Unfortunately, this file is not an official "redistributable", so I couldn't offer it for download from this website. Still, I bet that your best mate will already have it on his/her computer; version 2.0 is nearly a relic nowadays. 
+
+
+
+Q25. How can I disable winXP (or ME) default ZIP handling?
+
+A. 2xExplorer doesn't fare very well with this new OS feature where ZIP archives behave like folders. Moreover, there are a few bugs in the microsoft implementation and generally you don't get the quality that purpose-built archive managers like WinRAR or WinZip would offer. To turn off this feature and get back to the good old days of archive management, you need to unregister the DLL that performs this simulation. Just run this command: "regsvr32 /u zipfldr.dll" from within your system directory where this DLL is kept. Then just allow your archive program to take over the ZIP file associations.
+NOTE: from version Z1 onwards zipfolders are the recommended option for dealing with ZIP archives, if your system has this capability of course.
+
+
+
+Q26. How can I have zip folders in windows 2000?
+
+For those of you jealous of your ME friends who get to enjoy zips-as-folders functionality, don't despair because there's a way to have this feature for w2K too. All you need is a copy of "zipfldr.dll" as it appears on a windows ME system; this uses 2 more dlls, dunzip32.dll and dzip32.dll, so you'll need those too. Copy everything into your system folder and register the main object using: "regsvr32 zipfldr.dll" (the inverse procedure of that described in the above FAQ# 25). Be weary though that this DLL is a bit quirky and does not behave 100% --- which may explain why M/$ did not include it in the original release of w2000...
+
+
+
+Q27. I can't create (paste) hard links
+
+Hard links are only supported for NTFS partitions. Hence windows 9x or NTxx with FAT32 partitions, floppy discs etc are not covered. Even for NTFS partitions there are limitations; the files thus linked must reside in the same partition. It is not possible to place a hard link in e.g. "C:\" for a file located at (say) a mapped network drive.
+
+
+
+------------------------------------------------------------------------
+WWW:    http://www.netez.com/2xExplorer
+Forum:  http://www.netez.com/bbs/

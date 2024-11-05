@@ -1,0 +1,56 @@
+/////////////////////////////////////////////////////////////////////
+// INSTALLATION GUIDE FOR 2xExplorer
+
+The steps needed to install 2xExplorer on any computer are nearly
+trivial. Just use Windows Explorer (or any similar application)
+to create the folder that 2xExplorer will reside (e.g. 
+"C:\Program Files\2xExplorer") and copy the executable file together
+with all the accompanying text files in the newly created directory.
+You can add a shortcut for the application and keep it on the desktop
+for easy access to 2xExplorer.
+
+
+MINIMUM REQUIREMENTS: Windows 95
+2xExplorer will run on ALL Win32 platforms, including WinNT/2000. 
+(the program has been tested OK for NT4/SP4 and above)
+
+
+Below is a list of the files you should find in the 2xExplorer 
+archive (typically .zip file, if you have downloaded it):
+
+NAME             DESCRIPTION
+----------------------------------------------------------------------
+2xExplorer.exe   The application itself
+2xExplorer.rtf   The brief "help" file explaining the main features of
+                 2xExplorer. It should be kept in the same folder as
+                 the executable file.
+Licence.txt      Please read carefully before installing 2xExplorer
+Install.txt      This file
+Keyboard.txt     Keyboard assignments for advanced user commands
+FAQ.txt          Frequently Asked Questions that may help your query
+Newest.txt       Description of the latest version release
+registry.txt     Registry settings for "advanced" tweaking
+ReleaseNotes.zip Packed text files containing older release notes
+
+NOTE:
+"2xExplorer.exe.manifest" should be kept in the same folder as the main
+program if you use windows XP and you want the new "fancy" visual style
+controls. However it is not essential and you can delete it, especially
+if you prefer the traditional look.
+
+
+/////////////////////////////////////////////////////////////////////
+// UN-INSTALLING 2xExplorer
+
+The uninstall procedure is as straightforward as the installation. 
+2xExplorer does not copy any files in any system directory, so in 
+order to remove it you just have to delete the folder that you have 
+placed it into. Advanced tweakers may also wish to remove the info
+2xExplorer places in the registry: simply search within the RegEdit
+for "2xExplorer" and delete the respective key; that's the only spot
+used by the program.
+
+
+------------------------------------------------------------------------
+WWW:    http://www.netez.com/2xExplorer
+Forum:  http://www.netez.com/bbs/

@@ -1,0 +1,186 @@
+// TODO: This file is best viewed using a fixed-pitch font (e.g. Courier)
+
+2xExplorer provides keyboard shortcuts for most of its commands, which is a major asset when it comes to efficient everyday use. The accelerator for a command will be usually found next to its menu item. For your convenience, accelerators are also shown in the tooltip texts of the various toolbar buttons, enclosed within brackets.
+
+This file contains some useful 2xExplorer commands that do not appear in any menu or toolbar. They are only accessible via their keyboard equivalents that are listed below. The various commands are grouped in terms of relevance.
+
+
+A. ITEM SELECTION ------------------------------------------------------
+
+2xExplorer offers a wide range of commands for selecting (highlighting) items, which use various criteria to match files (e.g. according to a name pattern). Nevertheless, in some cases the easiest way to modify the selection state of a group of files/folders is to manually select or unselect them. You can do that either with the Insert key or with the mouse, as shown below. See the next section for methods of moving the focus cursor around the pane (and the important role of the <Ctrl> key for protecting a selection pattern).
+
+ACCELERATOR    DESCRIPTION OF COMMAND
+Insert         Toggle the selection state (select if unselected and vice-
+               versa) of the item under the (focus) cursor and move down
+Ctrl + Space   Toggles selection as <Ins>, but won't move the focus cursor
+Space          In sticky selection mode, <Space> on its own behaves like 
+               <Ctrl+Space> mentioned above
+Shift + Click  Extend the selection up to the clicked item
+Ctrl + Click   Select/Unselect an individual item, without affecting
+               the selection state of the remaining items
+Alt + D        Select all (and only) folders
+Alt+Shift+D    Unselect all selected folders
+
+Using the mouse you can also select items by drag-drawing an enclosing rectangle ("lasso") as per the standard explorer.
+
+When the Sticky selection mode is activated the mouse can also be used to toggle some item's selection just like the <Insert> key. This mode protects any existing selection against accidental clicks or key presses.
+
+
+B. CURSOR MOVEMENT -----------------------------------------------------
+
+The focused item is central to 2xExplorer. In each pane there is only one focus, recognized by the dotted rectangle drawn round the item name/details. The focused item is not necessarily selected at the same time. 2xExplorer automatically sets the focus after carrying out some commands, as for instance after synchronisation <F9>. The focused item is always visible; in case it is automatically set 2xExplorer may need to scroll the pane contents to ensure this visibility.
+
+Initially the focus is set to the first item listed in the folder, except if the folder was visited earlier, in which case the last focused item is restored. You can change the focus manually by clicking with the left mouse button or with any of the following keys:
+
+ACCELERATOR    DESCRIPTION OF COMMAND
+Arrow keys     Move the focus cursor to the respective arrow direction (*)
+Home/End       Move the focus cursor to the beginning/end of list      (*)
+PgUp/PgDn      Move the focus cursor a "page" (screenful) up/down      (*)
+<letter>       Move and select the first item whose name begins with   (**)
+               <letter>; can be used with more letters/substrings, too
+Shift+<letter> Similar to the above but here the letter/substring is 
+               matched against the extension of filenames (useful for
+               cases where a pane is sorted by extension)
+Alt + Down     Move the focus to the next item selected
+Alt + Up       Move the focus to the previous item selected
+
+(*) IMPORTANT: Care should be exercised when using the arrow keys and the other cursor relocating keys (Home etc.) on their own, since any unqualified key-press will UNSELECT all items (unless sticky mode is on, see below) except the one that the cursor will eventually end upon---hence running the risk of destroying a selection pattern in a swift stroke, which is definitely not amusing at all. Unfortunately this is the standard behaviour of the Windows List Control and there is no simple way around this "problem". However, it is possible to move around using the arrow keys and protect the selection state at the same time, if the <CONTROL> key is simultaneously kept pressed. Technically this causes the relocation of the focus item only, i.e. the one that has a dotted rectangle drawn around it (the so called focus rectangle). Starting from version RR-t, you can protect a valuable selection against accidents using the Mark|Selection|Store <Ctrl+F11> command. 
+STICKY SELECTION: The problems just mentioned disappear when sticky selection mode is on. There you can use the keyboard and mouse freely without risking loss of any prior selection.
+
+(**) NOTE: The same trick for "incremental" item selection can be also used within the tree pane.
+
+
+Finally, when the Synchronised Scrolling <Ctrl+Y> option is enabled, a change in the focused item in the active pane is mirrored in the inactive pane, too, if possible (i.e. if a file with the same name exists in the "other" pane it will be focused).
+
+
+C. PANE ACTIVATION -----------------------------------------------------
+
+Only one pane is active at any given time, the one whose title bar resembles a selected window. The active pane is important since all file operations like copy, delete, etc. are sourced from there. A pane can be activated by clicking anywhere on it (click on the title bar to protect any previous selection pattern). The two panes along with the folder history combo box in the address bar and the tree pane (if visible) can be considered as a "chain"; use the following keys to cycle round:
+
+ACCELERATOR    DESCRIPTION OF COMMAND
+Tab            Cycle between left/right panes
+Left/Right     Arrows behave like <Tab> when both panes are set in details view
+Shift + Tab    Jump to the folder history drop-down combo box
+Ctrl + Tab     Jump to the filesystem tree pane
+Esc/Tab        (from within the folder combo box or folder tree):
+               Return to the active pane
+
+To switch from the main 2xExplorer window to an editor/viewer window use the <Alt+Tab> standard windows task switching accelerator. To hop on and off from modeless dialogs like the find file results or the folder data window use <Alt+F6>.
+
+
+D. FOLDER BROWSING -----------------------------------------------------
+
+You are spoilt for choice when it comes to methods of changing the folder being browsed in the active pane. Except for those contained in the toolbar/drivebar and the various menus, the following methods are also available:
+
+ACCELERATOR    DESCRIPTION OF COMMAND
+Return         Browse for folder or execute the file under the cursor
+Double-Click   (equivalent to Return)
+Alt + F1       Select drive for the left pane
+Alt + F2       Select drive for the right pane
+Ctrl+Shift+    Jump to the root directory of the logical disk <letter>
+ <letter>      (e.g. <Ctrl+Shift+A> will take you to "A:\" etc.)
+
+The tree pane can be used for selecting a folder to load in the active pane. The same launching methods are used, i.e. pressing <return> or double-clicking on a folder. Tree branches can be expanded or collapsed using the left/right arrow keys or clicking on the [+]/[-] signs. To scroll horizontally the tree nodes (e.g. in tight width situations) use Ctrl+left/right arrows.
+
+Both views and the tree have optional single-click activation modes which, although not recommended, can simplify item activation and folder browsing requiring just one click instead of 2. The tree's single-click mode turns on the "hands-free" activation, which is a delay-based folder selection without having to press the <Return> key.
+
+Finally, a double-click on a pane's titleBar will take you up one level. This shortcut compensates for the lack of the traditional ".." pseudo-item found in some NC-clones.
+
+THE <ALT> MODIFIER. Unqualified, all the commands for changing folder (navigating) affect the active pane. However, holding down the <Alt> key instructs 2xExplorer to apply the command to the inactive pane instead. For example, whereas <Bksp> takes you to a folder one level up (parent), pressing <Alt+Bksp> will force the inactive pane to switch to ITS parent folder. This mechanism even works when one clicks on the toolbar or drivebar, double-clicks in (say) the FindFile results window, tree pane, et cetera.
+--------
+%%%NOTE: If you need to use a shortcut that combines Alt+Ctrl (for example <Alt+Ctrl+0> to force the bookmarked folder 0 loaded in the inactive pane, or <Alt+Ctrl+Shift+A> etc), you must press Alt BEFORE Ctrl. This glitch is the side-effect of a patch that fixed problems with the <AltGray> key, useful for international keyboards.
+
+
+E. THE <CONTROL> KEY MODIFIER ------------------------------------------
+
+Many commands throw up a dialog window to gather information for the operation to be. Some times this information can be infered from the context, making the dialog a plain nag, serving no purpose other than lowering down one's productivity rates <g>. In such occasions the <Ctrl> key can be used as a modifier to the standard command accelerator key, so as to dispense with the offending dialog, as shown below:
+
+ACCELERATOR    DESCRIPTION OF COMMAND
+Ctrl + F5      Direct copy of selected items to the opposite pane
+Ctrl + F6      Direct move of selected items to the opposite pane
+Ctrl + Grey[+] Direct marking of items using the last selection pattern
+Ctrl + Grey[-] Direct unmarking of items using the last pattern
+Ctrl + F3      Use the external viewer (an external editor must be
+               specified in the general program options)
+Ctrl + F4      Use the internal editor even when an external editor is
+               specified in the general program options
+
+Note that for viewing files the internal applet takes precedence whereas for editing your custom editor (if any) takes precedence. The <Ctrl> modifier offers access to the secondary  viewing/editing alternative.
+
+
+F. DRAGGING MODIFIERS --------------------------------------------------
+
+Although right-dragging is supported in 2xExplorer, users may find that it is quicker/easier to perform some operations while dragging files normally with the left mouse button.
+
+While left-dragging, the default operation depends on the drop location (e.g. whether the source/target folders are on the same device, whether the dropped file is an executable, etc). However, users are not limited to the default drag-drop operation; by holding down the standard (as per explorer) keys it is possible to explicitly set the intended file operation, hence making the use for right-mouse-dragging redundant. Even if you forget which key is for what operation, the changing mouse cursor shapes will act as a visual reminder.
+
+MODIFIER       FORCED FILE OPERATION
+Ctrl           Copy items
+Shift          Move items
+Ctrl+Shift     Create links (shortcuts) to items
+Right button   Cancels the drag altogether (same as pressing Esc)
+
+Note that both the active/inactive panes as well as the tree pane can be either drag sources or drop targets, and they all support drag scrolling, too.
+
+
+G. COMMAND EXECUTION FROM THE ADDRESS BAR ------------------------------
+
+The address bar is normally used for specifying a path for a folder to be browsed and/or visual filters for files to be shown/excluded in a 2xExplorer pane. However, it is also possible to execute a windows or MS/DOS program by typing it's name (possibly with arguments) directly in the address bar. In order to instruct the bar to execute the line you key-in as a command (i.e. not as a path/filter), you should begin the command with the special '$' or '>' characters.
+
+You can also copy item names from the active pane directly in the address bar, while you are composing the command line to be executed:
+
+ACCELERATOR    DESCRIPTION OF COMMAND
+Ctrl + arrows  Move the focus in the arrow direction in the active pane
+Ctrl + Return  Copy the name of the focused item from the active pane 
+               into the address bar
+Return         Execute the complete command
+
+While you are composing the command, you may insert the special $L or $R tokens, which will be substituted for the full path of the left or right pane active folder, respectively. Keep in mind that if any pathname contains spaces you should wrap the whole thing in quotation marks (e.g. "$L"). Instead of using <Ctrl+Return> to copy the focused filename in the command you may use $N instead, which will generally result in more reusable commands, accessible via the run command history <Ctrl+F10>.
+
+From version Z1 onwards, the tokens $P and $I can be used for the active and inactive pane path, respectively. This allows compilation of commands that aren't sensitive to which pane is active when a command is launched -- unlike the old $L/$R.
+
+If you want to execute a command with the standard windows executor (Run command, located in Start menu), you can take advantage of the <WinKey + R> system accelerator. In this way it is possible to run programs that are not in the PATH variable.
+
+
+H. AUTOCOMPLETION FOR COMBO BOXES --------------------------------------
+
+2xExplorer offers autocompletion in ALL it's combo (drop-down list) boxes where you type in information. That includes the address bar, the target folder in the CopyTo <F5> command, and so on. The behaviour is "similar" to internet explorer's autocompletion. The main difference is that 2x will try to autocomplete your "seed" (a small piece of text) by matching it against information you've typed before, which is present in the history of the specific combo box. The main advantage is that this seed can be anywhere in the target string, be it beginning, middle or end.
+
+The autocompletion functionality does not pop-up automatically, you'd have to press <up-arrow> first. Let's consider an example. Say that the address bar history list contains the following paths:
+
+A:\
+c:\winNT\profiles\umeca74\MeDocs\C++
+c:\winNT\profiles\umeca74\MeDocs\C++\cartman
+d:\temp
+
+If you type "C++" and hit <up-arrow>, then the first matching "c:\winNT\profiles\umeca74\MeDocs\C++" will be selected. Another <up-arrow> will fetch the next match "c:\winNT\profiles\umeca74\MeDocs\C++\cartman". That's the end of the line, since there's nothing else containing "C++" in the list. However you can press <down-arrow> searching for matches in the opposite direction. You can type in a new seed substring at any time. If you want to expand the drop-down window just press <Alt+down-arrow>.
+
+
+I. MISCELLANEOUS COMMANDS ----------------------------------------------
+
+And finally some commands that cannot be grouped in any intelligible context:
+
+[*] While dragging toolbars around, press <Ctrl> to prevent docking
+[*] Double click on the splitter bar dividing the two panes to toggle
+    viewing one pane or two equally sized panes.
+[*] Drag any folder/file from your desktop and drop it onto the 
+    address bar to browse the target without typing the pathname.
+
+ACCELERATOR    DESCRIPTION OF COMMAND
+Esc            Aborts some lengthy operations as gathering "Folder Data"
+Alt + Grey[+]  Mark all items that have the same extension as the focus
+Alt + Grey[-]  Similar to the Mark "Like this one" command <Alt+G[+]>,
+               but for unselecting items
+Shift + Del    Delete the selected items immediately without transfer
+               to the Recycle bin (CAUTION:this action can't be undone)
+Alt+Shift + C  Copy selected items' path names in the short 8.3 format
+Right click    Shows a popup menu depending on context (what and where is
+               selected). Try it in many dialogs, too, for even greater 
+               satisfaction -- guaranteed! <g>
+
+Note that the shell context menu of an item depends on its type, e.g. you'll find different menu entries if you right click on a folder compared to those of some (say) text file. If you hold <Shift> while right-clicking on an item the context menu will include an "Open with..." member. Finally, keep in mind that right clicking on items within "My Computer" folder gives access to many useful commands, like formatting floppy disks, etc.
+ 
+
+------------------------------------------------------------------------
+WWW:   http://www.netez.com/2xExplorer
+Forum: http://www.netez.com/bbs/
