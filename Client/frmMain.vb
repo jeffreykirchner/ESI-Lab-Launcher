@@ -1085,7 +1085,7 @@ Public Class frmMain
         Try
             'dispaly open file dialog to select file
             OpenFileDialog1.FileName = ""
-            OpenFileDialog1.Filter = "Presentations and Shows (*.pptx;*.ppt;*.pptm;*.ppsz*.pps;*ppsm)|*.pptx;*.ppt;*.pptm;*.ppsz*.pps;*ppsm"
+            OpenFileDialog1.Filter = "Presentations and Shows|*.pptx;*.ppt;*.pptm;*.ppsz;*.pps;*.ppsm;*.ppsx|All Files (*.*)|*.*"
             'OpenFileDialog1.InitialDirectory = System.Windows.Forms.Application.StartupPath
 
             OpenFileDialog1.ShowDialog()
