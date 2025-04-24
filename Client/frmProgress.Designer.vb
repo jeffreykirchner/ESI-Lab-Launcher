@@ -23,7 +23,7 @@ Partial Class frmProgress
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmProgress))
-        Me.ProgressBar1 = New System.Windows.Forms.ProgressBar
+        Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
         Me.SuspendLayout()
         '
         'ProgressBar1
@@ -43,7 +43,7 @@ Partial Class frmProgress
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmProgress"
-        Me.Opacity = 0.75
+        Me.Opacity = 0.75R
         Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "frmProgress"

@@ -23,7 +23,7 @@ Partial Class frmMain
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
-        Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog
+        Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.SuspendLayout()
         '
         'OpenFileDialog1
@@ -34,15 +34,15 @@ Partial Class frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(388, 0)
+        Me.ClientSize = New System.Drawing.Size(378, 0)
         Me.ControlBox = False
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.KeyPreview = True
-        Me.MaximumSize = New System.Drawing.Size(398, 36)
-        Me.MinimumSize = New System.Drawing.Size(398, 36)
+        Me.MaximumSize = New System.Drawing.Size(398, 43)
+        Me.MinimumSize = New System.Drawing.Size(398, 43)
         Me.Name = "frmMain"
-        Me.Opacity = 0.4
+        Me.Opacity = 0.4R
         Me.Text = "Server"
         Me.ResumeLayout(False)
 

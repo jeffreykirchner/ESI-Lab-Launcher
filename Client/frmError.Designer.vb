@@ -23,8 +23,8 @@ Partial Class frmError
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmError))
-        Me.FolderBrowserDialog1 = New System.Windows.Forms.FolderBrowserDialog
-        Me.txtErrors = New System.Windows.Forms.TextBox
+        Me.FolderBrowserDialog1 = New System.Windows.Forms.FolderBrowserDialog()
+        Me.txtErrors = New System.Windows.Forms.TextBox()
         Me.SuspendLayout()
         '
         'txtErrors

@@ -23,11 +23,11 @@ Partial Class frmAdministrator
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmAdministrator))
-        Me.txtUsername = New System.Windows.Forms.TextBox
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.txtPassword = New System.Windows.Forms.TextBox
-        Me.cmdSave = New System.Windows.Forms.Button
+        Me.txtUsername = New System.Windows.Forms.TextBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.txtPassword = New System.Windows.Forms.TextBox()
+        Me.cmdSave = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'txtUsername
@@ -44,7 +44,7 @@ Partial Class frmAdministrator
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.Location = New System.Drawing.Point(29, 31)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(79, 16)
+        Me.Label1.Size = New System.Drawing.Size(78, 16)
         Me.Label1.TabIndex = 1
         Me.Label1.Text = "Username"
         '
@@ -54,7 +54,7 @@ Partial Class frmAdministrator
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.Location = New System.Drawing.Point(29, 59)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(76, 16)
+        Me.Label2.Size = New System.Drawing.Size(75, 16)
         Me.Label2.TabIndex = 3
         Me.Label2.Text = "Password"
         '
