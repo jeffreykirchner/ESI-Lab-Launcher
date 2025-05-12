@@ -1,3 +1,11 @@
-Begin (4/24/2025 3:34:24 PM)
-End (4/24/2025 3:34:26 PM)
-
+Begin (5/12/2025 1:21:06 PM)
+End (5/12/2025 1:21:24 PM)
+M)
+Conversion from string "?" to type 'Boolean' is not valid.
+   at Microsoft.VisualBasic.CompilerServices.Conversions.ToBoolean(String Value)
+   at Client.frmMain.comboRecent_SelectedIndexChanged(Object sender, EventArgs e) in C:\Users\kirchner\OneDrive - Chapman University\Desktop\repos\esi_lab_launcher\Client\frmMain.vb:line 930
+error : (5/12/2025 1:20:32 PM)
+Conversion from string "?" to type 'Boolean' is not valid.
+   at Microsoft.VisualBasic.CompilerServices.Conversions.ToBoolean(String Value)
+   at Client.frmMain.comboRecent_SelectedIndexChanged(Object sender, EventArgs e) in C:\Users\kirchner\OneDrive - Chapman University\Desktop\repos\esi_lab_launcher\Client\frmMain.vb:line 930
+End (5/12/2025 1:20:40 PM)

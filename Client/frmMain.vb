@@ -181,6 +181,8 @@ Public Class frmMain
                 writeINI(sfile, "recent" & i, "launchInOrder", getINI(sfile, "recent" & i - 1, "launchInOrder"))
                 writeINI(sfile, "recent" & i, "selectionCounter", getINI(sfile, "recent" & i - 1, "selectionCounter"))
                 writeINI(sfile, "recent" & i, "selectionOrder", getINI(sfile, "recent" & i - 1, "selectionOrder"))
+                writeINI(sfile, "recent" & i, "cbAutoIncrement", getINI(sfile, "recent" & i - 1, "cbAutoIncrement"))
+                writeINI(sfile, "recent" & i, "nudAutoIncStart", getINI(sfile, "recent" & i - 1, "nudAutoIncStart"))
             Next
 
             'store new
@@ -202,6 +204,8 @@ Public Class frmMain
             'Next
 
             writeINI(sfile, "recent1", "selectionOrder", connectionOrderList)
+            writeINI(sfile, "recent1", "cbAutoIncrement", cbAutoIncrement.Checked)
+            writeINI(sfile, "recent1", "nudAutoIncStart", nudAutoIncStart.Value)
 
             'reload
             ignoreRecentClick = True
@@ -922,6 +926,9 @@ Public Class frmMain
                 selectionOrder(i) = msgtokens(nextToken)
                 nextToken += 1
             Next
+
+            cbAutoIncrement.Checked = getINI(sfile, "recent" & tempSI, "cbAutoIncrement")
+            nudAutoIncStart.Value = getINI(sfile, "recent" & tempSI, "nudAutoIncStart")
 
         Catch ex As Exception
             appEventLog_Write("error :", ex)

@@ -249,7 +249,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <PropertyGroup>
-    <PostBuildEvent>signtool.exe sign /v /debug /fd SHA256 /tr "http://time.certum.pl" /td SHA256 /dlib "microsoft.trusted.signing.client.1.0.76\bin\x64\Azure.CodeSigning.Dlib.dll" /dmdf "microsoft.trusted.signing.client.1.0.76\metadata.sample.json" LaunchReceiver.exe</PostBuildEvent>
+    <PostBuildEvent>signtool.exe sign /v /debug /fd SHA256 /tr "http://timestamp.digicert.com" /td SHA256 /dlib "microsoft.trusted.signing.client.1.0.76\bin\x64\Azure.CodeSigning.Dlib.dll" /dmdf "microsoft.trusted.signing.client.1.0.76\metadata.sample.json" LaunchReceiver.exe</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
